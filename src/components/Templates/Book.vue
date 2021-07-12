@@ -43,6 +43,7 @@
 <script>
 import SideMenu from '@/components/Menus/SideMenu';
 import Book from '@/components/Modals/Book';
+import Instance from '@/lib/Instance.js';
 export default {
     data(){
         return {
@@ -64,6 +65,12 @@ export default {
             this.loadingComponent = this.$buefy.loading.open({
                 container: this.$refs.loading
             });
+            this.ins = new Instance();
+                this.ins.all("/book", {}, (response)=>{                                                                                                                                               
+                this.items = response.data;                                                                                                                                                      
+            }, (error)=>{                                                                                                                                                                        
+                console.log(error);                                                                                                                                                              
+            });                                
         },
         remove(param){
         },
