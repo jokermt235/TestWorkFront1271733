@@ -25,7 +25,6 @@
     </div>
 </template>
 <script>
-const CustomFirebase = require('@/scripts/custom-firebase.js');
 export default{
     data(){
         return {
@@ -39,17 +38,6 @@ export default{
     },
     methods:{
         login(){
-            let email = this.email;
-            let password = this.password;
-            CustomFirebase.default.auth().signInWithEmailAndPassword(email, password)
-            .then(user => {
-                if(user){
-                    this.$router.push("home");
-                }
-            })
-            .catch(error => {
-                console.log(error); 
-            });
         }
     }
 }
