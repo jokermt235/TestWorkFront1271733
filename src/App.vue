@@ -17,12 +17,6 @@ export default {
   components: {
   },
   mounted(){
-    console.log(TAG, "Mounted event");
-    var self = this;
-    this.db = this.CustomFirebase.default.firestore();
-    this.CustomFirebase.default.auth().onAuthStateChanged(function(user) {
-      user ? self.$router.push(self.commonName).catch(()=>{}):self.$router.push("login").catch(()=>{});
-    });
   }
 }
 </script>
