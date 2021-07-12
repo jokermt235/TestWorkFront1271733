@@ -58,6 +58,19 @@ export default {
     },
     methods : {
         add(){
+            this.ins.save("book",{name: this.name, author_id : this.author_id, page_count : this.pa},(response)=>{
+                if(response){
+                    this.message = "Успешно сохранено проверьте список";
+                    this.success = true;
+                    this.danger = false;
+                    this.load();
+                }   
+            },(error)=>{
+                console.log(error);
+                this.success = false;
+                this.danger = true;
+                this.message = error;
+            }); 
 
         },
         load(){
